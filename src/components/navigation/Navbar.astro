@@ -1,0 +1,29 @@
+---
+import DesktopNavigation from "./DesktopNavigation.astro";
+import MobileMenuButton from "./MobileMenuButton.astro";
+---
+
+<nav class="sticky top-0 w-full z-50 glass-nav">
+  <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
+    <a href="/" class="text-2xl font-bold gradient-text tracking-tight"
+      >Jesus Mena
+    </a>
+
+    <DesktopNavigation />
+    <MobileMenuButton />
+  </div>
+</nav>
+
+<style>
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #ea580c 0%, #be123c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>

@@ -1,0 +1,56 @@
+---
+import Button from "../starwind/button";
+---
+
+<section
+  id="inicio"
+  class="flex items-center justify-center py-20 px-6 relative"
+>
+  <!-- Decoración de fondo -->
+  <div
+    class="absolute top-1/6 -left-20 w-96 h-96 bg-orange-200/40 rounded-full blur-[100px]"
+  >
+  </div>
+  <div
+    class="absolute hidden md:block bottom-1/4 -right-20 w-96 h-96 bg-rose-200/40 rounded-full blur-[100px]"
+  >
+  </div>
+  <!-- ---- -->
+
+  <div class="max-w-4xl text-center relative z-10">
+    <h2
+      class="text-primary font-semibold mb-6 tracking-widest text-xl md:text-2xl animate-fade-in-up"
+    >
+      Hola, soy <span class="text-primary">Jesus Mena</span>
+    </h2>
+    <h1 class="text-4xl md:text-5xl font-bold mb-8 leading-tight">
+      Ingeniero en Desarrollo y Gestión de Software
+    </h1>
+    <!-- class="text-lg md:text-xl text-stone-500 mb-10 max-w-2xl mx-auto leading-relaxed" -->
+    <p
+      class="text-lg md:text-xl text-muted mb-10 max-w-2xl mx-auto leading-relaxed"
+    >
+      Transformo ideas complejas en código limpio y eficiente. Especializado en
+      arquitectura backend, interfaces modernas y soluciones escalables.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <!-- class="rounded-full hover:bg-orange-700 transition-all shadow-lg shadow-orange-600/20" -->
+      <Button
+        href="#proyectos"
+        variant="primary"
+        class="rounded-full shadow-lg shadow-orange-600/20"
+        size="lg"
+      >
+        Ver Proyectos
+      </Button>
+      <Button
+        href="#contacto"
+        variant="ghost"
+        size="lg"
+        class="rounded-full hover:bg-white shadow-lg shadow-black/5"
+      >
+        Contactar
+      </Button>
+    </div>
+  </div>
+</section>

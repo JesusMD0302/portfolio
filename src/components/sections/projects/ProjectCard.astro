@@ -1,0 +1,107 @@
+---
+import Button from "@/components/starwind/button";
+import TechnologyBadge from "@/components/badge/TechnologyBadge.astro";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/starwind/card";
+
+interface Props {
+  projectName: string;
+  projectDescription: string;
+  projectTechnologies: string[];
+  projectLink: string;
+  isDemo?: boolean;
+}
+
+const {
+  projectName,
+  projectDescription,
+  projectTechnologies,
+  projectLink,
+  isDemo = true,
+} = Astro.props;
+---
+
+<Card class="overflow-hidden flex flex-col">
+  <div class="h-48 project-gradient-1 w-full flex items-center justify-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-16 w-16 text-white/50"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+    </svg>
+  </div>
+  <CardHeader class="py-4 px-6">
+    <CardTitle>{projectName}</CardTitle>
+    <CardDescription class="text-sm">{projectDescription}</CardDescription>
+  </CardHeader>
+  <CardContent class="pb-4 px-6 flex-1">
+    <div class="flex gap-2 flex-wrap">
+      {
+        projectTechnologies.map((technology) => (
+          <TechnologyBadge technology={technology} />
+        ))
+      }
+    </div>
+  </CardContent>
+  <CardFooter class="pb-4 px-6">
+    <Button
+      variant="ghost"
+      href={projectLink}
+      class="hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+    >
+      {
+        isDemo ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 mr-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+            />
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 mr-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+            />
+          </svg>
+        )
+      }
+      {isDemo ? "Ver Demo" : "Ver Galeria"}
+    </Button>
+  </CardFooter>
+</Card>
+
+<style>
+  .project-gradient-1 {
+    background: linear-gradient(135deg, #fed7aa 0%, #fda4af 100%);
+  }
+</style>
