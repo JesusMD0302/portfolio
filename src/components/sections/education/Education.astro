@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import SectionTitle from "../title/SectionTitle.astro";
+import EducationCard from "./EducationCard.astro";
+
+const education = (await getCollection("education")).sort((a, b) => {
+  const orderA = a.data.endDate?.valueOf() ?? Infinity;
+  const orderB = b.data.endDate?.valueOf() ?? Infinity;
+  return orderB - orderA;
+});
+---
+
+<section id="estudios" class="py-24 px-6 bg-white relative">
+  <div class="max-w-6xl mx-auto">
+    <SectionTitle number="03" title="Formación Académica" />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {
+        education.map((edu) => (
+          <EducationCard
+            period={`${edu.data.startDate} - ${edu.data.endDate ?? "Presente"}`}
+            career={edu.data.career}
+            institution={edu.data.institution}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

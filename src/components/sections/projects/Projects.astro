@@ -1,0 +1,36 @@
+---
+import { getCollection } from "astro:content";
+import SectionTitle from "../title/SectionTitle.astro";
+import ProjectCard from "./ProjectCard.astro";
+
+const projects = (await getCollection("projects")).sort((a, b) => {
+  const orderA = a.data.order ?? 0;
+  const orderB = b.data.order ?? 0;
+  return orderA - orderB;
+});
+---
+
+<section id="proyectos" class="py-24 px-6 relative">
+  <div class="max-w-6xl mx-auto">
+    <SectionTitle title="Proyectos Destacados" number="03" />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        projects.map((project) => (
+          <ProjectCard
+            projectName={project.data.title}
+            projectDescription={project.data.description}
+            projectTechnologies={project.data.technologies}
+            projectLink={
+              project.data.isDemo
+                ? `${project.data!.link}`
+                : `/projects/${project.id}`
+            }
+            isDemo={project.data.isDemo}
+            cover={project.data.cover}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

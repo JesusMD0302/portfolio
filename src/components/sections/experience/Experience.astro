@@ -1,0 +1,34 @@
+---
+import { getCollection } from "astro:content";
+import SectionTitle from "../title/SectionTitle.astro";
+import ExperienceListItem from "./ExperienceListItem.astro";
+
+const jobs = (await getCollection("jobs")).sort((a, b) => {
+  const orderA = a.data.order ?? 0;
+  const orderB = b.data.order ?? 0;
+  return orderA - orderB;
+});
+---
+
+<section id="experiencia" class="py-24 px-6 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <SectionTitle number="02" title="Experiencia Laboral" />
+
+    <div
+      class="space-y-12 border-l-2 border-stone-200 ml-3 md:ml-6 pl-8 md:pl-12 relative"
+    >
+      {
+        jobs.map((job) => (
+          <ExperienceListItem
+            title={job.data.title}
+            company={job.data.company}
+            period={`${job.data.startDate} - ${job.data.endDate ?? "Presente"}`}
+            description={job.data.description}
+            responsibilities={job.data.responsibilities}
+            isActive={job.data.isActive}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

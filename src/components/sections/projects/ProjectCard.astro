@@ -16,6 +16,10 @@ interface Props {
   projectTechnologies: string[];
   projectLink: string;
   isDemo?: boolean;
+  cover: {
+    src: string;
+    alt?: string;
+  };
 }
 
 const {
@@ -24,30 +28,23 @@ const {
   projectTechnologies,
   projectLink,
   isDemo = true,
+  cover,
 } = Astro.props;
 ---
 
 <Card class="overflow-hidden flex flex-col">
   <div class="h-48 project-gradient-1 w-full flex items-center justify-center">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="h-16 w-16 text-white/50"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-    </svg>
+    <img
+      src={cover.src}
+      alt={cover.alt ?? projectName}
+      class="h-full w-full object-cover brightness-90"
+    />
   </div>
-  <CardHeader class="py-4 px-6">
+  <CardHeader class="py-4 px-6 flex-1">
     <CardTitle>{projectName}</CardTitle>
     <CardDescription class="text-sm">{projectDescription}</CardDescription>
   </CardHeader>
-  <CardContent class="pb-4 px-6 flex-1">
+  <CardContent class="pb-4 px-6">
     <div class="flex gap-2 flex-wrap">
       {
         projectTechnologies.map((technology) => (
@@ -81,17 +78,22 @@ const {
         ) : (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-4 w-4 mr-1"
-            fill="none"
+            width="24"
+            height="24"
             viewBox="0 0 24 24"
+            fill="none"
             stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-images-icon lucide-images"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-            />
+            <>
+              <path d="m22 11-1.296-1.296a2.4 2.4 0 0 0-3.408 0L11 16" />
+              <path d="M4 8a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2" />
+              <circle cx="13" cy="7" r="1" fill="currentColor" />
+              <rect x="8" y="2" width="14" height="14" rx="2" />
+            </>
           </svg>
         )
       }
