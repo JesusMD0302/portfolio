@@ -4,16 +4,16 @@ description: Una plataforma web que permite a los clientes, buscar, visualizar, 
 technologies: [Nextjs, TypeScript, Chakra UI, Axios, JWT, PayPal]
 isDemo: false
 images:
-  - src: portfolio/images/projects/fractal-ecommerce/home.jpeg
+  - src: /images/projects/fractal-ecommerce/home.jpeg
     alt: Pantalla principal
-  - src: portfolio/images/projects/fractal-ecommerce/search.jpeg
+  - src: /images/projects/fractal-ecommerce/search.jpeg
     alt: Resultados de busqueda
-  - src: portfolio/images/projects/fractal-ecommerce/group-photos.jpeg
+  - src: /images/projects/fractal-ecommerce/group-photos.jpeg
     alt: Pantalla de selección de fotografías
-  - src: portfolio/images/projects/fractal-ecommerce/checkout.jpeg
+  - src: /images/projects/fractal-ecommerce/checkout.jpeg
     alt: Pantalla de procesamiento de pago
 cover:
-  src: portfolio/images/projects/fractal-ecommerce/home.jpeg
+  src: /images/projects/fractal-ecommerce/home.jpeg
   alt: Imagen de portada de Fractal Ecommerce
 order: 4
 ---
