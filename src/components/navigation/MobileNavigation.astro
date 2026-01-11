@@ -1,0 +1,90 @@
+---
+import { Toggle } from "@/components/starwind/toggle";
+import NavItem from "./NavItem.astro";
+
+const NavItems = [
+  { href: "#inicio", label: "Inicio" },
+  { href: "#habilidades", label: "Habilidades" },
+  { href: "#experiencia", label: "Experiencia" },
+  { href: "#proyectos", label: "Proyectos" },
+  { href: "#estudios", label: "Estudios" },
+];
+---
+
+<!-- <button class="md:hidden text-stone-500"> </button> -->
+<Toggle
+  id="toggleMenu"
+  class="md:hidden text-muted"
+  size="md"
+  variant="outline"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="h-9 w-9"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M4 6h16M4 12h16M4 18h16"></path>
+  </svg>
+</Toggle>
+
+<div
+  id="mobileMenu"
+  class="overflow-hidden max-h-0 text-sm font-medium tracking-wide text-muted absolute top-full left-0 w-full bg-white transition-all duration-300"
+>
+  <div class="flex md:hidden flex-col px-4 py-3">
+    {NavItems.map((item) => <NavItem href={item.href} label={item.label} />)}
+  </div>
+</div>
+
+<script>
+  import type { ToggleChangeEvent } from "@/components/starwind/toggle";
+
+  const toggleMenu = document.querySelector("#toggleMenu") as HTMLElement;
+  const mobileMenu = document.querySelector("#mobileMenu") as HTMLElement;
+
+  toggleMenu.addEventListener("starwind-toggle:change", (e: Event) => {
+    const event = e as ToggleChangeEvent;
+
+    if (event.detail.toggleId === "toggleMenu") {
+      if (event.detail.pressed) {
+        mobileMenu.classList.remove("max-h-0");
+        mobileMenu.classList.add("max-h-60");
+      } else {
+        mobileMenu.classList.remove("max-h-60");
+        mobileMenu.classList.add("max-h-0");
+      }
+    }
+  });
+
+  const closeEvent = new CustomEvent<ToggleChangeEvent["detail"]>(
+    "starwind-toggle:change",
+    {
+      detail: {
+        toggleId: "toggleMenu",
+        pressed: false,
+        syncGroup: "toggleMenu",
+      },
+      bubbles: true,
+    }
+  );
+
+  mobileMenu.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+
+    if (target.closest("a")) {
+      // mobileMenu.classList.remove("max-h-60");
+      // mobileMenu.classList.add("max-h-0");
+
+      toggleMenu.setAttribute("aria-pressed", "false");
+      toggleMenu.setAttribute("data-state", "off");
+
+      toggleMenu.dispatchEvent(closeEvent);
+    }
+  });
+</script>

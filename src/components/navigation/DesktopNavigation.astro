@@ -1,5 +1,5 @@
 ---
-import DesktopAnchor from "./DesktopAnchor.astro";
+import NavItem from "./NavItem.astro";
 
 const NavItems = [
   { href: "#inicio", label: "Inicio" },
@@ -7,16 +7,11 @@ const NavItems = [
   { href: "#experiencia", label: "Experiencia" },
   { href: "#proyectos", label: "Proyectos" },
   { href: "#estudios", label: "Estudios" },
-  { href: "#contacto", label: "Contacto" },
 ];
 ---
 
 <div
-  class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-stone-500"
+  class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-muted"
 >
-  {
-    NavItems.map((item) => (
-      <DesktopAnchor href={item.href} label={item.label} />
-    ))
-  }
+  {NavItems.map((item) => <NavItem href={item.href} label={item.label} />)}
 </div>

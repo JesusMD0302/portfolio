@@ -10,16 +10,9 @@ import TechnologyCard from "./TechnologyCard.astro";
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <!-- Backend Card -->
       <TechnologyCard
-        title="Backend & Arquitectura"
-        description="Diseño de APIs robustas, microservicios y gestión eficiente de bases de datos."
-        technologies={[
-          "Node.js",
-          "Python",
-          "Java",
-          "PostgreSQL",
-          "MongoDB",
-          "AWS",
-        ]}
+        title="Backend & Bases de Datos"
+        description="Diseño y mantenimiento de APIs, y gestión de bases de datos."
+        technologies={["Node.js", "PHP", "MongoDB", "MySQL", "PostgreSQL"]}
         ><svg
           xmlns="http://www.w3.org/2000/svg"
           class="w-7 h-7 text-orange-600"
@@ -43,8 +36,11 @@ import TechnologyCard from "./TechnologyCard.astro";
         description="Creación de interfaces responsivas, accesibles y con excelente experiencia de usuario."
         technologies={[
           "React",
-          "TypeScript",
           "Next.js",
+          "Astro",
+          "HTML",
+          "CSS",
+          "TypeScript",
           "Tailwind CSS",
           "Figma",
         ]}
@@ -67,15 +63,9 @@ import TechnologyCard from "./TechnologyCard.astro";
       <!-- DevOps & Tools Card -->
       <TechnologyCard
         color="amber"
-        title="DevOps & Herramientas"
-        description="Automatización de despliegues, control de versiones y entornos en la nube."
-        technologies={[
-          "Git / GitHub",
-          "Docker",
-          "CI/CD",
-          "Linux",
-          "Agile / Scrum",
-        ]}
+        title="Herramientas"
+        description="Tecnologías y metodologías para el control de versiones, la gestión y desarrollo de proyectos."
+        technologies={["Git / GitHub", "Linux", "Agile / Scrum", "Jira"]}
         ><svg
           xmlns="http://www.w3.org/2000/svg"
           class="w-7 h-7 text-amber-600"
