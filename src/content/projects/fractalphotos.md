@@ -5,7 +5,7 @@ technologies: [Nextjs, Next-Intl, TypeScript, Material UI, Axios]
 isDemo: true
 link: https://fractalphotos.com/
 cover:
-  src: /images/projects/fractal-photos/home.jpeg
+  src: portfolio/images/projects/fractal-photos/home.jpeg
   alt: Imagen de portada de Fractal Photos
 order: 2
 ---

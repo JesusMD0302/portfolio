@@ -4,22 +4,22 @@ description: Aplicación web para la administración y venta de paquetes de foto
 technologies: [Nextjs, React, Material UI, Axios, JWT]
 isDemo: false
 images:
-  - src: /images/projects/fractalweb/login.jpeg
+  - src: porfolio/images/projects/fractalweb/login.jpeg
     alt: Pantalla de login
-  - src: /images/projects/fractalweb/dashboard.jpeg
+  - src: porfolio/images/projects/fractalweb/dashboard.jpeg
     alt: Pantalla de dashboard
-  - src: /images/projects/fractalweb/groups.jpeg
+  - src: porfolio/images/projects/fractalweb/groups.jpeg
     alt: Pantalla de grupos
-  - src: /images/projects/fractalweb/group-photos.jpeg
+  - src: porfolio/images/projects/fractalweb/group-photos.jpeg
     alt: Pantalla de fotos de grupo
-  - src: /images/projects/fractalweb/location.jpeg
+  - src: porfolio/images/projects/fractalweb/location.jpeg
     alt: Pantalla de locaciones
-  - src: /images/projects/fractalweb/photos-by-date.jpeg
+  - src: porfolio/images/projects/fractalweb/photos-by-date.jpeg
     alt: Pantalla de foto por fecha
-  - src: /images/projects/fractalweb/postventa.jpeg
+  - src: porfolio/images/projects/fractalweb/postventa.jpeg
     alt: Pantalla de post venta
 cover:
-  src: /images/projects/fractalweb/dashboard.jpeg
+  src: porfolio/images/projects/fractalweb/dashboard.jpeg
   alt: Imagen de portada de Fractal Web
 order: 1
 ---

@@ -5,7 +5,7 @@ technologies: [React, React Router DOM, React Helmet, TypeScript, Material UI]
 isDemo: true
 link: https://mylink.fractalphotos.com/#/cancunadventure
 cover:
-  src: /images/projects/fractal-delivery/home.jpeg
+  src: portfolio/images/projects/fractal-delivery/home.jpeg
   alt: Imagen de portada de Fractal Delivery
 order: 3
 ---
