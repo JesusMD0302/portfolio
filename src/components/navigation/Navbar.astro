@@ -1,11 +1,13 @@
 ---
 import DesktopNavigation from "./DesktopNavigation.astro";
 import MobileNavigation from "./MobileNavigation.astro";
+
+const baseURL = import.meta.env.BASE_URL || "/";
 ---
 
 <nav class="sticky top-0 w-full z-50 glass-nav">
   <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
-    <a href="/" class="text-2xl font-bold gradient-text tracking-tight"
+    <a href={baseURL} class="text-2xl font-bold gradient-text tracking-tight"
       >Jesus Mena
     </a>
 

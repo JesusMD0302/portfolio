@@ -1,17 +1,14 @@
 ---
 import NavItem from "./NavItem.astro";
-
-const NavItems = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#habilidades", label: "Habilidades" },
-  { href: "#experiencia", label: "Experiencia" },
-  { href: "#proyectos", label: "Proyectos" },
-  { href: "#estudios", label: "Estudios" },
-];
+import { navigationPaths } from "./navigation.config.ts";
 ---
 
 <div
   class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-muted"
 >
-  {NavItems.map((item) => <NavItem href={item.href} label={item.label} />)}
+  {
+    navigationPaths.map((item) => (
+      <NavItem href={item.href} label={item.label} />
+    ))
+  }
 </div>

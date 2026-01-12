@@ -24,7 +24,7 @@ const projects = (await getCollection("projects")).sort((a, b) => {
             projectLink={
               project.data.isDemo
                 ? `${project.data!.link}`
-                : `/projects/${project.id}`
+                : `projects/${project.id}`
             }
             isDemo={project.data.isDemo}
             cover={project.data.cover}

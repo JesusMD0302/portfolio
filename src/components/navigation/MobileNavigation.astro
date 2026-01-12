@@ -1,14 +1,7 @@
 ---
 import { Toggle } from "@/components/starwind/toggle";
 import NavItem from "./NavItem.astro";
-
-const NavItems = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#habilidades", label: "Habilidades" },
-  { href: "#experiencia", label: "Experiencia" },
-  { href: "#proyectos", label: "Proyectos" },
-  { href: "#estudios", label: "Estudios" },
-];
+import { navigationPaths } from "./navigation.config.ts";
 ---
 
 <!-- <button class="md:hidden text-stone-500"> </button> -->
@@ -38,7 +31,11 @@ const NavItems = [
   class="overflow-hidden max-h-0 text-sm font-medium tracking-wide text-muted absolute top-full left-0 w-full bg-white transition-all duration-300"
 >
   <div class="flex md:hidden flex-col px-4 py-3">
-    {NavItems.map((item) => <NavItem href={item.href} label={item.label} />)}
+    {
+      navigationPaths.map((item) => (
+        <NavItem href={item.href} label={item.label} />
+      ))
+    }
   </div>
 </div>
 
