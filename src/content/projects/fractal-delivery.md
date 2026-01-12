@@ -1,7 +1,7 @@
 ---
 title: Fractal Delivery
-description: Aplicación web para el manejo de la presentación de links finales y de muestra, de los paquetes fotográficos generados con los sistemas de TohSoft.
-technologies: [React, React Router DOM, React Helmet, TypeScript, Material UI]
+description: Migración de codigo de un sitio web para el manejo de la presentación de links finales y de muestra, de los paquetes fotográficos generados con los sistemas de TohSoft.
+technologies: [React, React Router DOM, TypeScript, Material UI]
 isDemo: true
 link: https://mylink.fractalphotos.com/#/cancunadventure
 cover:

@@ -1,6 +1,6 @@
 ---
 title: Fractal Web
-description: Aplicación web para la administración y venta de paquetes de fotografías para empresas del sector turístico.
+description: Aplicación web de gestión diseñada para empresas el sector turístico que ofrecen paquetes fotográficos durante sus recorridos, facilitando el control de ventas, pagos y entrega de contenido.
 technologies: [Nextjs, React, Material UI, Axios, JWT]
 isDemo: false
 images:
