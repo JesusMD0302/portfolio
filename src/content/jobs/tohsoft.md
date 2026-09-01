@@ -1,7 +1,8 @@
 ---
 title: Desarrollador Web
 company: TohSoft
-startDate: 2024
+startDate: Febrero 2024
+endDate: Agosto 2026
 description: Desarrollador responsable del diseño, desarrollo y mantenimiento de aplicaciones y sitios web, asegurando su funcionalidad, rendimiento, seguridad y experiencia de usuario. Colaborar para implementar soluciones tecnológicas alineadas con los objetivos del negocio.
 responsibilities:
   [
