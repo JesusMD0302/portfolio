@@ -7,7 +7,7 @@ images:
   - src: images/projects/fractal-ecommerce/home.jpeg
     alt: Pantalla principal
   - src: images/projects/fractal-ecommerce/search.jpeg
-    alt: Resultados de busqueda
+    alt: Resultados de búsqueda
   - src: images/projects/fractal-ecommerce/group-photos.jpeg
     alt: Pantalla de selección de fotografías
   - src: images/projects/fractal-ecommerce/checkout.jpeg

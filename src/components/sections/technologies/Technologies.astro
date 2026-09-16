@@ -1,17 +1,21 @@
 ---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import SectionTitle from "../title/SectionTitle.astro";
 import TechnologyCard from "./TechnologyCard.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section id="habilidades" class="py-24 px-6 relative">
   <div class="max-w-6xl mx-auto">
-    <SectionTitle title="Tecnologías & Habilidades" number="01" />
+    <SectionTitle title={t("home.sections.technologies")} number="01" />
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <!-- Backend Card -->
       <TechnologyCard
-        title="Backend & Bases de Datos"
-        description="Diseño y mantenimiento de APIs, y gestión de bases de datos."
+        title={t("home.skills.backend.title")}
+        description={t("home.skills.backend.description")}
         technologies={["Node.js", "PHP", "MongoDB", "MySQL", "PostgreSQL"]}
         ><svg
           xmlns="http://www.w3.org/2000/svg"
@@ -32,8 +36,8 @@ import TechnologyCard from "./TechnologyCard.astro";
       <!-- Frontend Card -->
       <TechnologyCard
         color="rose"
-        title="Frontend Moderno"
-        description="Creación de interfaces responsivas, accesibles y con excelente experiencia de usuario."
+        title={t("home.skills.frontend.title")}
+        description={t("home.skills.frontend.description")}
         technologies={[
           "React",
           "Next.js",
@@ -64,8 +68,8 @@ import TechnologyCard from "./TechnologyCard.astro";
       <!-- DevOps & Tools Card -->
       <TechnologyCard
         color="amber"
-        title="Herramientas"
-        description="Tecnologías y metodologías para el control de versiones, la gestión y desarrollo de proyectos."
+        title={t("home.skills.tools.title")}
+        description={t("home.skills.tools.description")}
         technologies={["Git / GitHub", "Linux", "Agile / Scrum", "Jira"]}
         ><svg
           xmlns="http://www.w3.org/2000/svg"

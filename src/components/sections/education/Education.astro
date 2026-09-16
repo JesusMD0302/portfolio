@@ -2,7 +2,14 @@
 import { getCollection } from "astro:content";
 import SectionTitle from "../title/SectionTitle.astro";
 import EducationCard from "./EducationCard.astro";
-import { getLocalizedCollections } from "@/i18n/utils";
+import {
+  getLangFromUrl,
+  getLocalizedCollections,
+  useTranslations,
+} from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const education = getLocalizedCollections<"education">(
   (await getCollection("education")).sort((a, b) => {
@@ -10,19 +17,19 @@ const education = getLocalizedCollections<"education">(
     const orderB = b.data.endDate?.valueOf() ?? Infinity;
     return orderB - orderA;
   }),
-  Astro.params.lang!,
+  lang,
 );
 ---
 
 <section id="estudios" class="py-24 px-6 bg-white relative">
   <div class="max-w-6xl mx-auto">
-    <SectionTitle number="03" title="Formación Académica" />
+    <SectionTitle number="03" title={t("home.sections.academic")} />
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {
         education.map((edu) => (
           <EducationCard
-            period={`${edu.data.startDate} - ${edu.data.endDate ?? "Presente"}`}
+            period={`${edu.data.startDate} - ${edu.data.endDate ?? t("common.present")}`}
             career={edu.data.career}
             institution={edu.data.institution}
           />

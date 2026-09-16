@@ -1,8 +1,4 @@
-import type {
-  CollectionEntry,
-  CollectionKey,
-  AnyEntryMap,
-} from "astro:content";
+import type { CollectionEntry, AnyEntryMap } from "astro:content";
 import { ui, defaultLang } from "./ui";
 
 export function getLangFromUrl(url: URL) {
@@ -14,7 +10,7 @@ export function getLangFromUrl(url: URL) {
 }
 
 export function useTranslations(lang: keyof typeof ui) {
-  const localizedUI: Record<string, string> = {};
+  const localizedUI: Record<string, string> = ui[lang];
 
   return function t(key: keyof (typeof ui)[typeof lang]) {
     return key in localizedUI ? localizedUI[key] : ui[defaultLang][key];

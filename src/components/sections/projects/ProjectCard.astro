@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/starwind/card";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
 interface Props {
   projectName: string;
@@ -30,6 +31,9 @@ const {
   isDemo = true,
   cover,
 } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Card class="overflow-hidden flex flex-col">
@@ -98,7 +102,11 @@ const {
           </svg>
         )
       }
-      {isDemo ? "Ver Demo" : "Ver Galeria"}
+      {
+        isDemo
+          ? t("home.featuredProjects.buttons.demo")
+          : t("home.featuredProjects.buttons.gallery")
+      }
     </Button>
   </CardFooter>
 </Card>

@@ -2,7 +2,14 @@
 import { getCollection } from "astro:content";
 import SectionTitle from "../title/SectionTitle.astro";
 import ProjectCard from "./ProjectCard.astro";
-import { getLocalizedCollections } from "@/i18n/utils";
+import {
+  getLangFromUrl,
+  getLocalizedCollections,
+  useTranslations,
+} from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const projects = getLocalizedCollections<"projects">(
   (await getCollection("projects")).sort((a, b) => {
@@ -10,13 +17,13 @@ const projects = getLocalizedCollections<"projects">(
     const orderB = b.data.order ?? 0;
     return orderA - orderB;
   }),
-  Astro.params.lang!,
+  lang,
 );
 ---
 
 <section id="proyectos" class="py-24 px-6 relative">
   <div class="max-w-6xl mx-auto">
-    <SectionTitle title="Proyectos Destacados" number="03" />
+    <SectionTitle title={t("home.sections.projects")} number="03" />
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {

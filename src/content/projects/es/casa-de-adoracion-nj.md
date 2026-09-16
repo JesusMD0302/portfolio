@@ -20,7 +20,7 @@ images:
   - src: images/projects/casa-nj/near-event.png
     alt: Contador para el día del evento más cercano
   - src: images/projects/casa-nj/events.jpeg
-    alt: Listado de eventos proximos
+    alt: Listado de eventos próximos
   - src: images/projects/casa-nj/notices.png
     alt: Sección de avisos
   - src: images/projects/casa-nj/gallery.png

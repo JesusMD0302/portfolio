@@ -2,7 +2,14 @@
 import { getCollection } from "astro:content";
 import SectionTitle from "../title/SectionTitle.astro";
 import ExperienceListItem from "./ExperienceListItem.astro";
-import { getLocalizedCollections } from "@/i18n/utils";
+import {
+  getLangFromUrl,
+  getLocalizedCollections,
+  useTranslations,
+} from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const jobs = getLocalizedCollections<"jobs">(
   (await getCollection("jobs")).sort((a, b) => {
@@ -10,13 +17,13 @@ const jobs = getLocalizedCollections<"jobs">(
     const orderB = b.data.order ?? 0;
     return orderA - orderB;
   }),
-  Astro.params.lang!,
+  lang,
 );
 ---
 
 <section id="experiencia" class="py-24 px-6 bg-white">
   <div class="max-w-6xl mx-auto">
-    <SectionTitle number="02" title="Experiencia Laboral" />
+    <SectionTitle number="02" title={t("home.sections.experience")} />
 
     <div
       class="space-y-12 border-l-2 border-stone-200 ml-3 md:ml-6 pl-8 md:pl-12 relative"
@@ -26,7 +33,7 @@ const jobs = getLocalizedCollections<"jobs">(
           <ExperienceListItem
             title={job.data.title}
             company={job.data.company}
-            period={`${job.data.startDate} - ${job.data.endDate ?? "Presente"}`}
+            period={`${job.data.startDate} - ${job.data.endDate ?? t("common.present")}`}
             description={job.data.description}
             responsibilities={job.data.responsibilities}
             isActive={job.data.isActive}
