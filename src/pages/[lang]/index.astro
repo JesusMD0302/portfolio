@@ -1,0 +1,12 @@
+---
+import Landing from "@/components/pages/Landing.astro";
+import Layout from "@/layouts/Layout.astro";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "es" } }];
+}
+---
+
+<Layout>
+  <Landing />
+</Layout>

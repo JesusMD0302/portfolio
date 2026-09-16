@@ -2,9 +2,11 @@
 import { Toggle } from "@/components/starwind/toggle";
 import NavItem from "./NavItem.astro";
 import { navigationPaths } from "./navigation.config.ts";
+import { getLangFromUrl } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
-<!-- <button class="md:hidden text-stone-500"> </button> -->
 <Toggle
   id="toggleMenu"
   class="md:hidden text-muted"
@@ -33,7 +35,7 @@ import { navigationPaths } from "./navigation.config.ts";
   <div class="flex md:hidden flex-col px-4 py-3">
     {
       navigationPaths.map((item) => (
-        <NavItem href={item.href} label={item.label} />
+        <NavItem href={`${item.base}${lang}/${item.href}`} label={item.label} />
       ))
     }
   </div>
@@ -68,7 +70,7 @@ import { navigationPaths } from "./navigation.config.ts";
         syncGroup: "toggleMenu",
       },
       bubbles: true,
-    }
+    },
   );
 
   mobileMenu.addEventListener("click", (e) => {

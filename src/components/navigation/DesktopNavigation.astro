@@ -1,6 +1,9 @@
 ---
+import { getLangFromUrl } from "@/i18n/utils";
 import NavItem from "./NavItem.astro";
 import { navigationPaths } from "./navigation.config.ts";
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <div
@@ -8,7 +11,7 @@ import { navigationPaths } from "./navigation.config.ts";
 >
   {
     navigationPaths.map((item) => (
-      <NavItem href={item.href} label={item.label} />
+      <NavItem href={`${item.base}${lang}/${item.href}`} label={item.label} />
     ))
   }
 </div>

@@ -2,12 +2,16 @@
 import { getCollection } from "astro:content";
 import SectionTitle from "../title/SectionTitle.astro";
 import ExperienceListItem from "./ExperienceListItem.astro";
+import { getLocalizedCollections } from "@/i18n/utils";
 
-const jobs = (await getCollection("jobs")).sort((a, b) => {
-  const orderA = a.data.order ?? 0;
-  const orderB = b.data.order ?? 0;
-  return orderA - orderB;
-});
+const jobs = getLocalizedCollections<"jobs">(
+  (await getCollection("jobs")).sort((a, b) => {
+    const orderA = a.data.order ?? 0;
+    const orderB = b.data.order ?? 0;
+    return orderA - orderB;
+  }),
+  Astro.params.lang!,
+);
 ---
 
 <section id="experiencia" class="py-24 px-6 bg-white">

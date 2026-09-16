@@ -1,9 +1,9 @@
 const baseURL = import.meta.env.BASE_URL || "/";
 
 export const navigationPaths = [
-  { href: `${baseURL}#`, label: "Inicio" },
-  { href: `${baseURL}#habilidades`, label: "Habilidades" },
-  { href: `${baseURL}#experiencia`, label: "Experiencia" },
-  { href: `${baseURL}#proyectos`, label: "Proyectos" },
-  { href: `${baseURL}#estudios`, label: "Estudios" },
+  { base: `${baseURL}`, href: `#`, label: "Inicio" },
+  { base: `${baseURL}`, href: `#habilidades`, label: "Habilidades" },
+  { base: `${baseURL}`, href: `#experiencia`, label: "Experiencia" },
+  { base: `${baseURL}`, href: `#proyectos`, label: "Proyectos" },
+  { base: `${baseURL}`, href: `#estudios`, label: "Estudios" },
 ];

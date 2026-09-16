@@ -1,16 +1,13 @@
 ---
+import type { projectSchema } from "@/content/config";
 import TechnologyBadge from "../badge/TechnologyBadge.astro";
 import { Card, CardContent, CardHeader, CardTitle } from "../starwind/card";
+import type { z } from "astro:content";
+
+type Project = z.infer<typeof projectSchema>;
 
 interface Props {
-  project: {
-    title: string;
-    description: string;
-    link?: string;
-    technologies: string[];
-    isDemo: boolean;
-    images?: { src: string; alt?: string }[];
-  };
+  project: Project;
 }
 
 const { project } = Astro.props;

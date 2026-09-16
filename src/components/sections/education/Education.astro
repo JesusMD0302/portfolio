@@ -2,12 +2,16 @@
 import { getCollection } from "astro:content";
 import SectionTitle from "../title/SectionTitle.astro";
 import EducationCard from "./EducationCard.astro";
+import { getLocalizedCollections } from "@/i18n/utils";
 
-const education = (await getCollection("education")).sort((a, b) => {
-  const orderA = a.data.endDate?.valueOf() ?? Infinity;
-  const orderB = b.data.endDate?.valueOf() ?? Infinity;
-  return orderB - orderA;
-});
+const education = getLocalizedCollections<"education">(
+  (await getCollection("education")).sort((a, b) => {
+    const orderA = a.data.endDate?.valueOf() ?? Infinity;
+    const orderB = b.data.endDate?.valueOf() ?? Infinity;
+    return orderB - orderA;
+  }),
+  Astro.params.lang!,
+);
 ---
 
 <section id="estudios" class="py-24 px-6 bg-white relative">

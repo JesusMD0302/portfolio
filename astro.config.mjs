@@ -11,4 +11,11 @@ export default defineConfig({
   },
   site: "https://jesusmd0302.github.io/portfolio/",
   base: "/portfolio/",
+  i18n: {
+    locales: ["en", "es"],
+    defaultLocale: "en",
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
 });

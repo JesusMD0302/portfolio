@@ -1,13 +1,16 @@
 ---
 import Navbar from "@/components/navigation/Navbar.astro";
+import { getLangFromUrl } from "@/i18n/utils";
 import "@/styles/global.css";
 import "@/styles/starwind.css";
 import "@fontsource-variable/geist";
 import "glightbox/dist/css/glightbox.css";
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />

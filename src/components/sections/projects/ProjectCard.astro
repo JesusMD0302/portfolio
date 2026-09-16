@@ -35,7 +35,7 @@ const {
 <Card class="overflow-hidden flex flex-col">
   <div class="h-48 project-gradient-1 w-full flex items-center justify-center">
     <img
-      src={cover.src}
+      src={`${import.meta.env.BASE_URL}${cover.src}`}
       alt={cover.alt ?? projectName}
       class="h-full w-full object-cover brightness-90"
     />

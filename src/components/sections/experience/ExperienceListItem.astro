@@ -1,11 +1,16 @@
 ---
-interface Props {
-  title: string;
-  company: string;
+import type { jobSchema } from "@/content/config";
+import type { z } from "astro:content";
+
+type ExperienceItemType = z.infer<typeof jobSchema>;
+
+type ExperienceItem = Pick<
+  ExperienceItemType,
+  "title" | "company" | "description" | "responsibilities" | "isActive"
+>;
+
+interface Props extends ExperienceItem {
   period: string;
-  description: string;
-  responsibilities: string[];
-  isActive?: boolean;
 }
 
 const {
