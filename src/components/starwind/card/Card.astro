@@ -1,14 +1,20 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import { tv } from "tailwind-variants";
+import type { VariantProps } from "tailwind-variants";
 
-type Props = HTMLAttributes<"div">;
+import { card } from "./variants";
 
-export const card = tv({ base: "bg-card text-card-foreground rounded-2xl border shadow-sm" });
+type Props = HTMLAttributes<"div"> & VariantProps<typeof card>;
 
-const { class: className, ...rest } = Astro.props;
+const { size = "md", class: className, ...rest } = Astro.props;
 ---
 
-<div class={card({ class: className })} data-slot="card" {...rest}>
+<div
+  data-sw-card
+  class={card({ size, class: className })}
+  {...rest}
+  data-size={size}
+  data-slot="card"
+>
   <slot />
 </div>
