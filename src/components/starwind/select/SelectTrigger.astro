@@ -5,13 +5,14 @@ import type { HTMLAttributes } from "astro/types";
 import type { VariantProps } from "tailwind-variants";
 import { selectTrigger, selectValue } from "./variants";
 
-type Props = HTMLAttributes<"button"> & VariantProps<typeof selectTrigger> & {
-  asChild?: boolean;
-  iconClass?: string;
-  placeholder?: string;
-  showIcon?: boolean;
-  valueClass?: string;
-};
+type Props = HTMLAttributes<"button"> &
+  VariantProps<typeof selectTrigger> & {
+    asChild?: boolean;
+    iconClass?: string;
+    placeholder?: string;
+    showIcon?: boolean;
+    valueClass?: string;
+  };
 
 const {
   asChild = false,
@@ -32,6 +33,7 @@ const {
   data-size={size}
   data-slot="select-trigger"
 >
+  <slot name="startIcon" />
   <slot>
     <SelectPrimitive.Value
       class={selectValue({ class: valueClassName })}
@@ -43,7 +45,12 @@ const {
   {
     !asChild && showIcon && (
       <SelectPrimitive.Icon
-        class={["text-muted-foreground pointer-events-none size-4", iconClassName].filter(Boolean).join(" ")}
+        class={[
+          "text-muted-foreground pointer-events-none size-4",
+          iconClassName,
+        ]
+          .filter(Boolean)
+          .join(" ")}
         data-slot="select-icon"
       >
         <slot name="icon">
