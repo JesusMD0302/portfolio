@@ -2,17 +2,28 @@
 import { getCollection } from "astro:content";
 import SectionTitle from "../title/SectionTitle.astro";
 import ProjectCard from "./ProjectCard.astro";
+import {
+  getLangFromUrl,
+  getLocalizedCollections,
+  useTranslations,
+} from "@/i18n/utils";
 
-const projects = (await getCollection("projects")).sort((a, b) => {
-  const orderA = a.data.order ?? 0;
-  const orderB = b.data.order ?? 0;
-  return orderA - orderB;
-});
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const projects = getLocalizedCollections<"projects">(
+  (await getCollection("projects")).sort((a, b) => {
+    const orderA = a.data.order ?? 0;
+    const orderB = b.data.order ?? 0;
+    return orderA - orderB;
+  }),
+  lang,
+);
 ---
 
 <section id="proyectos" class="py-24 px-6 relative">
   <div class="max-w-6xl mx-auto">
-    <SectionTitle title="Proyectos Destacados" number="03" />
+    <SectionTitle title={t("home.sections.projects")} number="03" />
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {
@@ -24,7 +35,7 @@ const projects = (await getCollection("projects")).sort((a, b) => {
             projectLink={
               project.data.isDemo
                 ? `${project.data!.link}`
-                : `projects/${project.id}`
+                : `${import.meta.env.BASE_URL}${project.lang}/projects/${project.id}`
             }
             isDemo={project.data.isDemo}
             cover={project.data.cover}

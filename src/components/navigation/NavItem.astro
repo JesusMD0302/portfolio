@@ -1,7 +1,11 @@
 ---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
 const { href, label } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <a href={href} class="hover:text-primary transition-colors py-3 md:py-0"
-  >{label}</a
+  >{t(label)}</a
 >

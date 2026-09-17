@@ -2,17 +2,28 @@
 import { getCollection } from "astro:content";
 import SectionTitle from "../title/SectionTitle.astro";
 import ExperienceListItem from "./ExperienceListItem.astro";
+import {
+  getLangFromUrl,
+  getLocalizedCollections,
+  useTranslations,
+} from "@/i18n/utils";
 
-const jobs = (await getCollection("jobs")).sort((a, b) => {
-  const orderA = a.data.order ?? 0;
-  const orderB = b.data.order ?? 0;
-  return orderA - orderB;
-});
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const jobs = getLocalizedCollections<"jobs">(
+  (await getCollection("jobs")).sort((a, b) => {
+    const orderA = a.data.order ?? 0;
+    const orderB = b.data.order ?? 0;
+    return orderA - orderB;
+  }),
+  lang,
+);
 ---
 
 <section id="experiencia" class="py-24 px-6 bg-white">
   <div class="max-w-6xl mx-auto">
-    <SectionTitle number="02" title="Experiencia Laboral" />
+    <SectionTitle number="02" title={t("home.sections.experience")} />
 
     <div
       class="space-y-12 border-l-2 border-stone-200 ml-3 md:ml-6 pl-8 md:pl-12 relative"
@@ -22,7 +33,7 @@ const jobs = (await getCollection("jobs")).sort((a, b) => {
           <ExperienceListItem
             title={job.data.title}
             company={job.data.company}
-            period={`${job.data.startDate} - ${job.data.endDate ?? "Presente"}`}
+            period={`${job.data.startDate} - ${job.data.endDate ?? t("common.present")}`}
             description={job.data.description}
             responsibilities={job.data.responsibilities}
             isActive={job.data.isActive}

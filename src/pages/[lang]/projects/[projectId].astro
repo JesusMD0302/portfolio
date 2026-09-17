@@ -6,10 +6,14 @@ import Project from "@/components/pages/Project.astro";
 import { getCollection } from "astro:content";
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
-  return projects.map((project) => ({
-    params: { projectId: project.id },
-    props: { project: project.data },
-  }));
+  return projects.map((project) => {
+    const [lang, ...slug] = project.id.split("/");
+
+    return {
+      params: { lang, projectId: slug.join("/") },
+      props: { project: project.data },
+    };
+  });
 }
 
 const { project } = Astro.props;

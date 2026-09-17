@@ -1,15 +1,21 @@
 ---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import DesktopNavigation from "./DesktopNavigation.astro";
 import MobileNavigation from "./MobileNavigation.astro";
 
 const baseURL = import.meta.env.BASE_URL || "/";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <nav class="sticky top-0 w-full z-50 glass-nav">
   <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
-    <a href={baseURL} class="text-2xl font-bold gradient-text tracking-tight"
-      >Jesus Mena
-    </a>
+    <a
+      href={`${baseURL}${lang}`}
+      class="text-2xl font-bold gradient-text tracking-tight"
+      >{t("common.name")}</a
+    >
 
     <DesktopNavigation />
     <MobileNavigation />

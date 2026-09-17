@@ -1,14 +1,19 @@
 ---
+import { getLangFromUrl } from "@/i18n/utils";
 import NavItem from "./NavItem.astro";
 import { navigationPaths } from "./navigation.config.ts";
+import LanguagePicker from "./LanguagePicker.astro";
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <div
-  class="hidden md:flex space-x-8 text-sm font-medium tracking-wide text-muted"
+  class="hidden md:flex md:items-center space-x-8 text-sm font-medium tracking-wide text-muted"
 >
   {
     navigationPaths.map((item) => (
-      <NavItem href={item.href} label={item.label} />
+      <NavItem href={`${item.base}${lang}/${item.href}`} label={item.label} />
     ))
   }
+  <LanguagePicker />
 </div>

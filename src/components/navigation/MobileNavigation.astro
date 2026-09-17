@@ -1,29 +1,25 @@
 ---
+import { Menu } from "@lucide/astro";
 import { Toggle } from "@/components/starwind/toggle";
 import NavItem from "./NavItem.astro";
 import { navigationPaths } from "./navigation.config.ts";
+import { getLangFromUrl } from "@/i18n/utils";
+import LanguagePicker from "./LanguagePicker.astro";
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
-<!-- <button class="md:hidden text-stone-500"> </button> -->
+<div class="md:hidden">
+  <LanguagePicker />
+</div>
+
 <Toggle
   id="toggleMenu"
   class="md:hidden text-muted"
   size="md"
   variant="outline"
 >
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    class="h-9 w-9"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M4 6h16M4 12h16M4 18h16"></path>
-  </svg>
+  <Menu stroke-width={2} />
 </Toggle>
 
 <div
@@ -33,7 +29,7 @@ import { navigationPaths } from "./navigation.config.ts";
   <div class="flex md:hidden flex-col px-4 py-3">
     {
       navigationPaths.map((item) => (
-        <NavItem href={item.href} label={item.label} />
+        <NavItem href={`${item.base}${lang}/${item.href}`} label={item.label} />
       ))
     }
   </div>
@@ -68,7 +64,7 @@ import { navigationPaths } from "./navigation.config.ts";
         syncGroup: "toggleMenu",
       },
       bubbles: true,
-    }
+    },
   );
 
   mobileMenu.addEventListener("click", (e) => {

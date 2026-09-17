@@ -1,17 +1,18 @@
 ---
+import type { projectSchema } from "@/content/config";
 import TechnologyBadge from "../badge/TechnologyBadge.astro";
 import { Card, CardContent, CardHeader, CardTitle } from "../starwind/card";
+import type { z } from "astro:content";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+type Project = z.infer<typeof projectSchema>;
 
 interface Props {
-  project: {
-    title: string;
-    description: string;
-    link?: string;
-    technologies: string[];
-    isDemo: boolean;
-    images?: { src: string; alt?: string }[];
-  };
+  project: Project;
 }
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const { project } = Astro.props;
 ---
@@ -33,7 +34,7 @@ const { project } = Astro.props;
 
           <Card>
             <CardHeader>
-              <CardTitle> Tecnologías Utilizadas </CardTitle>
+              <CardTitle> {t("project.technologies")} </CardTitle>
             </CardHeader>
             <CardContent>
               <div class="flex flex-wrap gap-2">
@@ -67,13 +68,13 @@ const { project } = Astro.props;
             ))
           ) : (
             <div class="w-full rounded-lg overflow-hidden shadow-lg bg-stone-100 flex items-center justify-center h-64 animate-fade-in-up">
-              <span class="text-muted">No hay imágenes disponibles</span>
+              <span class="text-muted">{t("project.noImages")}</span>
             </div>
           )
         }
         <div class="flex items-center justify-center py-12">
           <div class="h-px bg-stone-200 w-20"></div>
-          <span class="text-muted text-sm px-4">Fin de la galería</span>
+          <span class="text-muted text-sm px-4">{t("project.endGallery")}</span>
           <div class="h-px bg-stone-200 w-20"></div>
         </div>
       </div>

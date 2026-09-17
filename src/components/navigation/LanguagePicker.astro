@@ -1,0 +1,40 @@
+---
+import { Languages } from "@lucide/astro";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+} from "@/components/starwind/select";
+import { languages } from "@/i18n/ui";
+import { getLangFromUrl } from "@/i18n/utils";
+
+const currentLang = getLangFromUrl(Astro.url);
+
+const currentPath = Astro.url.pathname;
+
+console.log("ruta actual:", currentPath);
+---
+
+<Select defaultValue={currentLang} class="w-12">
+  <SelectTrigger placeholder="Select a language">
+    <Languages slot="startIcon" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectLabel>Language</SelectLabel>
+      {
+        Object.entries(languages).map(([lang]) => (
+          <SelectItem
+            value={lang}
+            onclick={`window.location.href = '${currentPath.replace(currentLang, lang)}/'`}
+          >
+            {lang.charAt(0).toUpperCase() + lang.slice(1)}
+          </SelectItem>
+        ))
+      }
+    </SelectGroup>
+  </SelectContent>
+</Select>
