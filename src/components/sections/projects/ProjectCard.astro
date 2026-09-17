@@ -1,4 +1,5 @@
 ---
+import { Images, ExternalLink } from "@lucide/astro";
 import Button from "@/components/starwind/button";
 import TechnologyBadge from "@/components/badge/TechnologyBadge.astro";
 import {
@@ -64,44 +65,7 @@ const t = useTranslations(lang);
       href={projectLink}
       class="hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
     >
-      {
-        isDemo ? (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-4 w-4 mr-1"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-            />
-          </svg>
-        ) : (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-images-icon lucide-images"
-          >
-            <>
-              <path d="m22 11-1.296-1.296a2.4 2.4 0 0 0-3.408 0L11 16" />
-              <path d="M4 8a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2" />
-              <circle cx="13" cy="7" r="1" fill="currentColor" />
-              <rect x="8" y="2" width="14" height="14" rx="2" />
-            </>
-          </svg>
-        )
-      }
+      {isDemo ? <ExternalLink /> : <Images />}
       {
         isDemo
           ? t("home.featuredProjects.buttons.demo")
